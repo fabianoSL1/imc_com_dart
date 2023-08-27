@@ -7,14 +7,18 @@ import 'package:calculador_imc_dart/domain/pessoa.dart';
 void main(List<String> arguments) {
   Pessoa pessoa = Pessoa();
   Imc imc = Imc();
-  print("nome: ");
-  pessoa.nome = stdin.readLineSync()!;
+  try {
+    print("nome: ");
+    pessoa.nome = stdin.readLineSync()!;
 
-  print("altura (ex: 1.73)");
-  pessoa.altura = double.parse(stdin.readLineSync()!);
+    print("altura (ex: 1.73)");
+    pessoa.altura = double.parse(stdin.readLineSync()!);
 
-  print("peso (ex: 73.00)");
-  pessoa.peso = double.parse(stdin.readLineSync()!);
+    print("peso (ex: 73.00)");
+    pessoa.peso = double.parse(stdin.readLineSync()!);
+  } catch (err) {
+    print("falha ao capturar dados");
+  }
 
   double resultado = imc.calcular(pessoa);
   String classificacao = textClassificacao(imc.classificar(resultado));
